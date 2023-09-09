@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requests List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .request-card {
+            background-color: #fff;
+            margin: 10px 0;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .request-card h3 {
+            margin: 0;
+            color: #333;
+        }
+
+        .request-card p {
+            margin: 10px 0;
+            color: #777;
+        }
+
+        .request-card button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .request-card button:hover {
+            background-color: #0056b3;
+        }
+
+        .accept-button,
+        .reject-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% if requests %}
+        {% for request in requests %}
+        <div class="request-card">
+            <h3>Friend Request from {{ request.sender }}</h3>
+            <p>{{request.sender.first_name}} {{request.sender.last_name}} wants to connect with you on our platform.</p>
+            <a href="/accept/{{request.sender}}">Accept</a>
+        </div>
+        {% endfor %}
+        {% else %}
+        No Requests
+        {% endif %}
+
+        <!-- Repeat the request cards for each request -->
+    </div>
+</body>
+</html>

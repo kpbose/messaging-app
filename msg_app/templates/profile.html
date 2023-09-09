@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .profile {
+            text-align: center;
+            padding: 20px;
+            background-color: #075e54;
+            color: #fff;
+        }
+
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+        }
+
+        .profile-name {
+            margin-top: 10px;
+            font-size: 24px;
+        }
+
+        .profile-status {
+            font-size: 16px;
+            opacity: 0.8;
+        }
+
+        .profile-details {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-details h2 {
+            font-size: 20px;
+        }
+
+        .profile-details p {
+            font-size: 16px;
+        }
+
+        .profile-actions {
+            text-align: center;
+        }
+
+        .action-button {
+            background-color: #25d366;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .action-button:hover {
+            background-color: #128C7E;
+        }
+        .form-group {
+            margin: 20px 0;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+    <title>WhatsApp Profile</title>
+</head>
+<body>
+    <div class="profile">
+        <img src="{% static 'images/client.jpg' %}" alt="Profile Picture" class="profile-picture">
+        <h1 class="profile-name">{{user_p.name.first_name}} {{user_p.name.last_name}} <br>
+        </h1>
+        <p class="profile-status">{{user_p.status}}</p>
+        <button onclick="open_form()">Edit</button>
+        <div id="form_div">
+            <form action="profile" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Mobile No:</label>
+                    <input type="text" name="mobile" id="">
+                </div>
+                <div class="form-group">
+                    <label for="password">Status:</label>
+                    <input type="text" name="status" id="">
+                </div>
+                <div class="form-group">
+                    <input type="submit" onclick="close_form()" value="Done">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="profile-details">
+        <h2>About Me</h2>
+        <p>{{user_p.name.username}} </p>
+        {{user_p.name.email}} <br>
+{{user_p.mobile_no}}
+    </div>
+    <!-- <div id="form_div">
+        <form action="profile" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Mobile No:</label>
+                <input type="text" name="mobile" id="">
+            </div>
+            <div class="form-group">
+                <label for="password">Status:</label>
+                <input type="text" name="status" id="">
+            </div>
+            <div class="form-group">
+                <input type="submit" onclick="close_form()" value="Done">
+            </div>
+        </form>
+    </div> -->
+    <script>
+        document.getElementById("form_div").style.display="none";
+      function open_form(){
+        document.getElementById("form_div").style.display="block";
+      }
+      function close_form(){
+        document.getElementById("form_div").style.display="none";
+      }
+    </script>
+<!-- 
+    <div class="profile-actions">
+        <button class="action-button">Send Message</button>
+        <button class="action-button">Add to Contacts</button>
+    </div> -->
+</body>
+</html>

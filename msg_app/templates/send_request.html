@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .request-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .request-item {
+            background-color: #f7f7f7;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .request-item .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #007bff;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+        }
+
+        .user-name {
+            font-weight: bold;
+        }
+
+        .request-action {
+            display: flex;
+            align-items: center;
+        }
+
+        .accept-button,
+        .reject-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .reject-button {
+            background-color: #dc3545;
+        }
+
+        .accept-button:hover,
+        .reject-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <a  class="accept-button" style="text-decoration: none;" href="messenger/{{request.user}}"> Chats</a>
+        <a  class="accept-button" style="text-decoration: none;" href="requests"> Requests</a> 
+    </div>
+    <div class="container">
+        <h1>People You May Know</h1>
+        <ul class="request-list">
+            {% for user in users %}
+            <li class="request-item">
+                <div class="user-info">
+                    <div class="user-avatar"> </div>
+                    <div class="user-name">{{user.username}}</div>
+                </div>
+                <div class="request-action">
+                    <a class="accept-button" href="send_request/{{user.username}}" style="text-decoration: none;">Add freind</a></button>
+                    
+                </div>
+            </li>
+            {% endfor %}
+            
+            <!-- Add more request items as needed -->
+        </ul>
+    </div>
+</body>
+</html>

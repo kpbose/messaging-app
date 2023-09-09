@@ -1,0 +1,130 @@
+<!-- registration form
+<form action="" method="post">
+    {% csrf_token %}
+<br> username{{ form.username }}
+<br> firstname{{form.first_name}}
+<br> lastname{{form.last_name}}
+<br> email{{form.email}}
+<br> password{{form.password}}
+<input type="submit" value="Submit">
+</form> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+        .signup-link {
+            margin-top: 15px;
+        }
+
+        .signup-link a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .signup-link a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Registration</h2>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username:</label>
+                {{ form.username }}
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                {{form.email}}
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                {{form.password}}
+            </div>
+            <div class="form-group">
+                <label for="firstname">First Name:</label>
+                {{form.first_name}}
+            </div>
+            <div class="form-group">
+                <label for="lastname">Last Name:</label>
+                {{form.last_name}}
+            </div>
+            <div class="form-group text-center">
+                <input type="submit" value="Register">
+            </div>
+        </form>
+        <div class="signup-link">
+            Already have an account? <a href="signin">Sign In</a>
+        </div>
+    </div>
+</body>
+</html>
